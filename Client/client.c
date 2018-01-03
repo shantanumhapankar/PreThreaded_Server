@@ -14,22 +14,22 @@ int main(int argc, char **argv)
     char *host, *image;
     rio_t rio;
 
-    // if (argc != 4) {
-    // 	fprintf(stderr, "usage: %s <host> <port> <image>\n", argv[0]);
-    // 	exit(0);
-    // }
-    // host = argv[1];
-    // port = atoi(argv[2]);
-    // image = argv[3];
-    getpath();
+    if (argc != 4) {
+    	fprintf(stderr, "usage: %s <host> <port> <image>\n", argv[0]);
+    	exit(0);
+    }
+    host = argv[1];
+    port = atoi(argv[2]);
+    image = argv[3];
+    // getpath();
 
 
-    // clientfd = Open_clientfd(host, port);
-    // sendimage(clientfd, image);
-    // receiveimage(rio, clientfd, image);
-    // displaygray(image);
-    // Close(clientfd);
-    // exit(0);
+    clientfd = Open_clientfd(host, port);
+    sendimage(clientfd, image);
+    receiveimage(rio, clientfd, image);
+    displaygray(image);
+    Close(clientfd);
+    exit(0);
 }
 
 int sendimage(int connectionfd, char* imgname){
